@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ủng Hộ Chúng Tôi - Donate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-heart"></i> Ủng Hộ Chúng Tôi</h1>
+                <p>Mọi đóng góp của bạn đều có ý nghĩa lớn lao</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Donate Form -->
+            <section class="donate-section">
+                <div class="donate-card">
+                    <h2><i class="fas fa-hand-holding-heart"></i> Thông Tin Ủng Hộ</h2>
+                    
+                    <form id="donateForm" class="donate-form">
+                        <div class="form-group">
+                            <label for="donorName">
+                                <i class="fas fa-user"></i> Tên của bạn
+                            </label>
+                            <input type="text" id="donorName" name="donorName" placeholder="Nhập tên của bạn" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">
+                                <i class="fas fa-coins"></i> Số tiền (VNĐ)
+                            </label>
+                            <input type="number" id="amount" name="amount" placeholder="Nhập số tiền" min="1000" step="1000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fas fa-comment"></i> Lời nhắn (tùy chọn)
+                            </label>
+                            <textarea id="message" name="message" placeholder="Nhập lời nhắn của bạn..." rows="3"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-generate">
+                            <i class="fas fa-qrcode"></i> Tạo Mã QR Thanh Toán
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- QR Result Section -->
+            <section id="qrResult" class="qr-section" style="display: none;">
+                <div class="qr-card">
+                    <h2><i class="fas fa-qrcode"></i> Mã QR Thanh Toán</h2>
+                    
+                    <div class="qr-content">
+                        <div class="qr-image-container">
+                            <img id="qrImage" src="" alt="Mã QR thanh toán" class="qr-image">
+                        </div>
+                        
+                        <div class="payment-info">
+                            <h3>Thông Tin Thanh Toán</h3>
+                            <div class="info-item">
+                                <span class="label">Ngân hàng:</span>
+                                <span id="bankName" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Số tài khoản:</span>
+                                <span id="accountNumber" class="value">-</span>
+                                <button id="copyAccount" class="btn-copy" title="Copy số tài khoản">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Tên tài khoản:</span>
+                                <span id="accountName" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Số tiền:</span>
+                                <span id="displayAmount" class="value amount">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Nội dung:</span>
+                                <span id="displayMessage" class="value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qr-actions">
+                        <button id="downloadQR" class="btn-download">
+                            <i class="fas fa-download"></i> Tải Mã QR
+                        </button>
+                        <button id="newDonation" class="btn-new">
+                            <i class="fas fa-plus"></i> Ủng Hộ Mới
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bank Selection -->
+            <section class="bank-section">
+                <div class="bank-card">
+                    <h3><i class="fas fa-university"></i> Chọn Ngân Hàng</h3>
+                    <div class="bank-grid" id="bankGrid">
+                        <!-- Banks will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 - Trang web được tạo với ❤️ và VietQR.IO API (không cần key)</p>
+        </footer>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p>Đang tạo mã QR...</p>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="toast" style="display: none;">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
