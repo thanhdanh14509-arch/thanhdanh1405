@@ -6,9 +6,20 @@
     <title>Ủng Hộ Chúng Tôi - Donate</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a class="brand" href="/">Thanh Danh Games</a>
+            <button id="nav-toggle" class="nav-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/index.html">Donate</a></li>
+                <li><a href="/tienlen/tienlen.html">Tiến Lên</a></li>
+                <li><a href="/baccarat/baccarat.html">Baccarat</a></li>
+                <li><a href="/taixiu/taixiu.html">Tài Xỉu</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         <!-- Header -->
         <header class="header">
@@ -115,8 +126,15 @@
         </main>
 
         <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; 2024 - Trang web được tạo với ❤️ và VietQR.IO API (không cần key)</p>
+        <footer class="footer site-footer">
+            <div class="footer-inner">
+                <div class="foot-left">©2025 Thanh Danh Games. All rights reserved.</div>
+                <div class="foot-right">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -134,6 +152,13 @@
         <span id="toastMessage"></span>
     </div>
 
+    <script>
+    (function(){
+      const btn = document.getElementById('nav-toggle');
+      const links = document.getElementById('nav-links');
+      if(btn && links){ btn.addEventListener('click', ()=>{ links.classList.toggle('open'); }); }
+    })();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
